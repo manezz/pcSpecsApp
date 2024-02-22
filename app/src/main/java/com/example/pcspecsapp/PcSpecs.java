@@ -1,7 +1,7 @@
 package com.example.pcspecsapp;
 
 public class PcSpecs {
-    int id;
+    Integer id;
     String name;
     String cpu;
     String gpu;

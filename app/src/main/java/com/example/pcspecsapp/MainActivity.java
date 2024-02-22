@@ -24,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
     Button deletePcSpecs;
     ActivityResultLauncher<Intent> secondActivityLauncher;
     ActivityResultLauncher<Intent> thirdActivityLauncher;
+    ActivityResultLauncher<Intent> fourthActivityLauncher;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,6 +66,21 @@ public class MainActivity extends AppCompatActivity {
                             }
                         }
                 );
+        fourthActivityLauncher = registerForActivityResult
+                (
+                        new ActivityResultContracts.StartActivityForResult(),
+                        new ActivityResultCallback<ActivityResult>()
+                        {
+                            @Override
+                            public void onActivityResult(ActivityResult result)
+                            {
+                                if(result.getResultCode() == Activity.RESULT_OK)
+                                {
+                                    Intent intent = result.getData();
+                                }
+                            }
+                        }
+                );
 
         getPcSpecs.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,5 +89,14 @@ public class MainActivity extends AppCompatActivity {
                 thirdActivityLauncher.launch(intent);
             }
         });
+
+        addPcSpecs.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, CreateActivity.class);
+                fourthActivityLauncher.launch(intent);
+            }
+        });
+
     }
 }
