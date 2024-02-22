@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
     ActivityResultLauncher<Intent> thirdActivityLauncher;
     ActivityResultLauncher<Intent> fourthActivityLauncher;
     ActivityResultLauncher<Intent> fifthActivityLauncher;
+    ActivityResultLauncher<Intent> sixthActivityLauncher;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -97,6 +98,21 @@ public class MainActivity extends AppCompatActivity {
                             }
                         }
                 );
+        sixthActivityLauncher = registerForActivityResult
+                (
+                        new ActivityResultContracts.StartActivityForResult(),
+                        new ActivityResultCallback<ActivityResult>()
+                        {
+                            @Override
+                            public void onActivityResult(ActivityResult result)
+                            {
+                                if(result.getResultCode() == Activity.RESULT_OK)
+                                {
+                                    Intent intent = result.getData();
+                                }
+                            }
+                        }
+                );
 
         getPcSpecs.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -119,6 +135,14 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, UpdateActivity.class);
                 fifthActivityLauncher.launch(intent);
+            }
+        });
+
+        deletePcSpecs.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, DeleteActivity.class);
+                sixthActivityLauncher.launch(intent);
             }
         });
 
