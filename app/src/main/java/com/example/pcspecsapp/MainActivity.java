@@ -114,6 +114,14 @@ public class MainActivity extends AppCompatActivity {
                         }
                 );
 
+        getAllPcSpecs.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, GetAllActivity.class);
+                secondActivityLauncher.launch(intent);
+            }
+        });
+
         getPcSpecs.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
