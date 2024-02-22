@@ -37,6 +37,7 @@ public class GetByIdActivity extends AppCompatActivity {
         getByIdPsu = findViewById(R.id.getByIdPsu);
         getByIdMb = findViewById(R.id.getByIdMb);
 
+        // gets pcSpecs By Id
         setId_getByIdButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

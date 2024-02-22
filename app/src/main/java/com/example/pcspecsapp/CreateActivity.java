@@ -11,7 +11,6 @@ import android.widget.TextView;
 public class CreateActivity extends AppCompatActivity {
 
     Button createButton;
-    EditText createId;
     EditText createName;
     EditText createCpu;
     EditText createGpu;
@@ -33,6 +32,7 @@ public class CreateActivity extends AppCompatActivity {
         createPsu = findViewById(R.id.createPsu);
         createMb = findViewById(R.id.createMb);
 
+        // creates new pcSpecs
         createButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -45,15 +45,8 @@ public class CreateActivity extends AppCompatActivity {
                 pcSpecs.setPsu(String.valueOf(createPsu.getText()));
                 pcSpecs.setMb(String.valueOf(createMb.getText()));
 
-//                pcSpecs.name = String.valueOf(createName.getText());
-//                pcSpecs.cpu = String.valueOf(createCpu.getText());
-//                pcSpecs.gpu = String.valueOf(createGpu.getText());
-//                pcSpecs.ssd = String.valueOf(createSsd.getText());
-//                pcSpecs.psu = String.valueOf(createPsu.getText());
-//                pcSpecs.mb = String.valueOf(createRam.getText());
-
                 ApiLayer.addPcSpecs(pcSpecs);
-                //finish();
+                finish();
             }
         });
     }
