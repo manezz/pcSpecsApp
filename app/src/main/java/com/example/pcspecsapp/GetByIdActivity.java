@@ -41,14 +41,14 @@ public class GetByIdActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 PcSpecs pcSpecs = ApiLayer.getPcSpecsById(Integer.parseInt(setId_getById.getText().toString()));
-                getByIdId.setText("Id: " + String.valueOf(pcSpecs.getId()));
-                getByIdName.setText("Name: " + pcSpecs.getName());
-                getByIdCpu.setText("CPU: " + pcSpecs.getCpu());
-                getByIdGpu.setText("GPU: " + pcSpecs.getGpu());
-                getByIdRam.setText("RAM: " + pcSpecs.getRam());
-                getByIdSsd.setText("SSD: " + pcSpecs.getSsd());
-                getByIdPsu.setText("PSU: " + pcSpecs.getPsu());
-                getByIdMb.setText("MB: " + pcSpecs.getMb());
+                getByIdId.setText(String.valueOf(pcSpecs.getId()));
+                getByIdName.setText(pcSpecs.getName());
+                getByIdCpu.setText(pcSpecs.getCpu());
+                getByIdGpu.setText(pcSpecs.getGpu());
+                getByIdRam.setText(pcSpecs.getRam());
+                getByIdSsd.setText(pcSpecs.getSsd());
+                getByIdPsu.setText(pcSpecs.getPsu());
+                getByIdMb.setText(pcSpecs.getMb());
             }
         });
     }
