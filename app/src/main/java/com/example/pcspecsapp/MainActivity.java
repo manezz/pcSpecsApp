@@ -1,23 +1,77 @@
 package com.example.pcspecsapp;
 
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import org.w3c.dom.Text;
 
 public class MainActivity extends AppCompatActivity {
 
-    TextView text;
+    Button getAllPcSpecs;
+    Button getPcSpecs;
+    Button addPcSpecs;
+    Button updatePcSpecs;
+    Button deletePcSpecs;
+    ActivityResultLauncher<Intent> secondActivityLauncher;
+    ActivityResultLauncher<Intent> thirdActivityLauncher;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        text = findViewById(R.id.text);
+        getAllPcSpecs = findViewById(R.id.getAllPcSpecs);
+        getPcSpecs = findViewById(R.id.getPcSpecs);
+        addPcSpecs = findViewById(R.id.addPcSpecs);
+        updatePcSpecs = findViewById(R.id.updatePcSpecs);
+        deletePcSpecs = findViewById(R.id.deletePcSpecs);
 
-        PcSpecs pcSpecs = ApiLayer.getPcSpecsById(1);
-        text.setText(pcSpecs.getCpu());
+        secondActivityLauncher = registerForActivityResult
+                (
+                        new ActivityResultContracts.StartActivityForResult(),
+                        new ActivityResultCallback<ActivityResult>()
+                        {
+                            @Override
+                            public void onActivityResult(ActivityResult result)
+                            {
+                                if(result.getResultCode() == Activity.RESULT_OK)
+                                {
+                                    Intent intent = result.getData();
+                                }
+                            }
+                        }
+                );
+        thirdActivityLauncher = registerForActivityResult
+                (
+                        new ActivityResultContracts.StartActivityForResult(),
+                        new ActivityResultCallback<ActivityResult>()
+                        {
+                            @Override
+                            public void onActivityResult(ActivityResult result)
+                            {
+                                if(result.getResultCode() == Activity.RESULT_OK)
+                                {
+                                    Intent intent = result.getData();
+                                }
+                            }
+                        }
+                );
+
+        getPcSpecs.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, GetByIdActivity.class);
+                thirdActivityLauncher.launch(intent);
+            }
+        });
     }
 }

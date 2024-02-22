@@ -12,7 +12,37 @@
         android:id="@+id/text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello"
+        android:text="Pc Specs App"
         android:textSize="30sp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Get All Pc Specs"
+        android:id="@+id/getAllPcSpecs"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Get Pc Specs"
+        android:id="@+id/getPcSpecs"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add Pc Specs"
+        android:id="@+id/addPcSpecs"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Update Pc Specs"
+        android:id="@+id/updatePcSpecs"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Delete Pc Specs"
+        android:id="@+id/deletePcSpecs"/>
 
 </LinearLayout>
